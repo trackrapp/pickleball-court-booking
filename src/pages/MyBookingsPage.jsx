@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "react-oidc-context";
+import { useAppAuth } from "../auth/AuthProvider";
 import { cancelBooking, getBookings } from "../services/api";
 
 function MyBookingsPage() {
-  const auth = useAuth();
+  const auth = useAppAuth();
   const userEmail = auth.user?.profile?.email || "";
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);

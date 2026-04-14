@@ -1,8 +1,8 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "react-oidc-context";
+import { useAppAuth } from "../auth/AuthProvider";
 
 function ProtectedRoute({ children }) {
-  const auth = useAuth();
+  const auth = useAppAuth();
   const location = useLocation();
 
   if (!auth.isAuthenticated) {

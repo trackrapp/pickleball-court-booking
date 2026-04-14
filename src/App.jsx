@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useAuth } from "react-oidc-context";
+import { useAppAuth } from "./auth/AuthProvider";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CourtsPage from "./pages/CourtsPage";
@@ -9,7 +9,7 @@ import MyBookingsPage from "./pages/MyBookingsPage";
 import "./styles.css";
 
 function App() {
-  const auth = useAuth();
+  const auth = useAppAuth();
 
   if (auth.isLoading) {
     return (

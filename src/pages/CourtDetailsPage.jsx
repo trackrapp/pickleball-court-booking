@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useAuth } from "react-oidc-context";
+import { useAppAuth } from "../auth/AuthProvider";
 import SlotPicker from "../components/SlotPicker";
 import { createBooking, getCourt, getCourtAvailability } from "../services/api";
 
@@ -10,7 +10,7 @@ function getTodayDate() {
 
 function CourtDetailsPage() {
   const { courtId } = useParams();
-  const auth = useAuth();
+  const auth = useAppAuth();
   const [court, setCourt] = useState(null);
   const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [selectedSlot, setSelectedSlot] = useState("");

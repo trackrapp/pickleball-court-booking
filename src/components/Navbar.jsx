@@ -1,8 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "react-oidc-context";
+import { useAppAuth } from "../auth/AuthProvider";
 
 function Navbar() {
-  const auth = useAuth();
+  const auth = useAppAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,7 +20,10 @@ function Navbar() {
         <span className="brand-mark">PB</span>
         <div>
           <div className="navbar__title">Pickleball Court Booking</div>
-          <div className="navbar__subtitle">{auth.user?.profile?.email}</div>
+          <div className="navbar__subtitle">
+            {auth.user?.profile?.email}
+            {auth.mode === "demo" ? " (demo)" : ""}
+          </div>
         </div>
       </div>
       <nav className="navbar__links" aria-label="Main navigation">
